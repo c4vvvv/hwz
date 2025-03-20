@@ -1,115 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BLOG</title>
-<style> body {
-    font-family: 'Lato', 'Open Sans', sans-serif;
-    background-color: #F7F7F7;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-/* 導覽列 */
-header {
-    background-color: #1F3A93;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* 首頁 */
-.home {
-    text-align: center;
-    padding: 50px;
-}
-
-.layout1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.profile img {
-    width: 150px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-.intro {
-    max-width: 600px;
-}
-
-/* 學歷證照 */
-.timeline {
-    margin: 20px;
-    padding: 20px;
-    border-left: 3px solid #CBA135;
-}
-
-.entry {
-    margin-bottom: 20px;
-    padding-left: 15px;
-}
-
-/* 活動經歷 */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* 工作經歷 */
-.work-entry {
-    border-bottom: 1px solid #A6A6A6;
-    padding: 10px 0;
-}
-
-/* 成果花絮 */
-.gallery img {
-    width: 100%;
-    max-width: 300px;
-    margin: 10px;
-    border-radius: 5px;
-}
-
-/* 底部 */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 30px;
-}</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人網頁</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
- <header>
+    <!-- 導覽列 -->
+    <header>
         <nav>
             <ul>
                 <li><a href="#home">個人簡介</a></li>
@@ -126,15 +25,8 @@ footer {
         <div class="layout1">
             <div class="profile">
                 <img src="profile.jpg" alt="個人照片">
-
                 <h1>你的姓名</h1>
-<div id="editable" contenteditable="true">
-    這裡的文字可以編輯！EX:簡短介紹，例如「熱愛設計與技術，致力於前端與後端開發」
-</div>
-<button onclick="saveContent()">儲存變更</button>
-
-               
-             
+                <p>簡短介紹，例如「熱愛設計與技術，致力於前端與後端開發」</p>
             </div>
             <div class="intro">
                 <p>這裡放詳細個人介紹，可以包含學習歷程、興趣、專業技能等。</p>
@@ -206,70 +98,5 @@ footer {
     <footer>
         <p>聯絡方式：your.email@example.com | 電話：0912-345-678</p>
     </footer>
-
-    <script type="module">
-    // 🔹 載入 Firebase SDK
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-
-    // 🔹 Firebase 設定
-    const firebaseConfig = {
-        apiKey: "AIzaSyBGOhzk-cGUJ-HmAPlP-WMU-OXnK2BSZhs",
-        authDomain: "blog-0903.firebaseapp.com",
-        projectId: "blog-0903",
-        storageBucket: "blog-0903.appspot.com",
-        messagingSenderId: "652196155132",
-        appId: "1:652196155132:web:4404fb2c46007647d1d179",
-        measurementId: "G-KM4M7PJB2G"
-    };
-
-    // 🔹 初始化 Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app); // 🔥 初始化 Firestore
-
-    // 🔹 讀取 Firestore 內容
-    async function loadContent() {
-        try {
-            const docRef = doc(db, "pages", "homepage");
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                document.getElementById("editable").innerText = docSnap.data().content;
-                console.log("✅ 成功讀取 Firestore 資料");
-            } else {
-                console.log("⚠️ 文件不存在，顯示預設內容");
-                document.getElementById("editable").innerText = "這裡是首頁內容，請編輯後儲存！";
-            }
-        } catch (error) {
-            console.error("❌ 讀取 Firestore 錯誤：", error);
-        }
-    }
-
-    // 🔹 更新 Firestore 內容
-    async function saveContent() {
-        try {
-            const newContent = document.getElementById("editable").innerText;
-            await setDoc(doc(db, "pages", "homepage"), { content: newContent });
-            alert("✅ 內容已成功儲存到 Firestore！");
-            console.log("✅ Firestore 儲存成功", newContent);
-        } catch (error) {
-            console.error("❌ Firestore 寫入錯誤：", error);
-        }
-    }
-
-    // 🔹 初次載入時讀取資料
-    window.onload = loadContent;
-</script>
-
-<!-- 🔹 HTML 可編輯區域 -->
-<div id="editable" contenteditable="true" style="border:1px solid #ccc; padding:10px; width:300px;">
-    這裡是首頁內容，請編輯後儲存！
-</div>
-<button onclick="saveContent()">儲存內容</button>
-
-</script>
-
 </body>
-	
-
 </html>
