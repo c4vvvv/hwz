@@ -5,6 +5,226 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個人網頁</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+body {
+    font-family: 'Lato', 'Open Sans', sans-serif;
+    background-color: #F7F7F7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 導覽列 */
+header {
+    background-color: #1F3A93;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 首頁 */
+.home {
+    text-align: center;
+    padding: 50px;
+}
+
+.layout1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.intro {
+    max-width: 600px;
+}
+
+/* 學歷證照 */
+.timeline {
+    margin: 20px;
+    padding: 20px;
+    border-left: 3px solid #CBA135;
+}
+
+.entry {
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+/* 活動經歷 */
+#activities {
+  padding: 20px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 三列排版 */
+  gap: 20px;
+}
+
+.card {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.card img {
+  width: 600px;         /* 固定寬度 */
+  height:200px;        /* 固定高度 */
+  object-fit: contain;  /* 保證圖片保持比例並且完全顯示 */
+  border-radius: 8px;
+  cursor: pointer;     /* 鼠標指針變為手形，提示可以點擊 */
+}
+
+.lightbox {
+  display: inline-block;
+  position: relative;
+}
+
+.lightbox img {
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox:focus {
+  outline: none;
+}
+
+/* Lightbox 視窗的樣式 */
+.lightbox-modal {
+  display: none;          /* 默認不顯示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+.lightbox-modal.active {
+  display: flex;          /* 顯示模態視窗 */
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 30px;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+}
+/* 工作經歷 */
+.work-entry {
+    border-bottom: 1px solid #A6A6A6;
+    padding: 10px 0;
+}
+
+/* 成果花絮 */
+.gallery img {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+/* 底部 */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#achievements {
+  text-align: center;
+  margin: 20px;
+}
+
+.carousel {
+  position: relative;
+  width: 600px;  /* 設定輪播容器的寬度 */
+  height: 400px; /* 設定固定高度 */
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-image {
+  width: 600px;  /* 每張圖片的寬度固定為 600px */
+  height: 400px; /* 每張圖片的高度固定為 400px */
+  object-fit: cover;  /* 保證圖片不會失真並填滿容器 */
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+</style>
 </head>
 <body>
     <!-- 導覽列 -->
@@ -24,27 +244,41 @@
     <section id="home" class="home">
         <div class="layout1">
             <div class="profile">
-                <img src="profile.jpg" alt="個人照片">
-                <h1>你的姓名</h1>
-                <p>簡短介紹，例如「熱愛設計與技術，致力於前端與後端開發」</p>
+                <img src="個人照片.jfif" alt="個人照片">
+                <h1>陳旻薇 | Shanna</h1>
+                <p>
+
+
+靜宜大學觀光事業學系大四生</p>
+
+<P>是一位積極提升自我的人</p>
             </div>
             <div class="intro">
-                <p>這裡放詳細個人介紹，可以包含學習歷程、興趣、專業技能等。</p>
+                <p>團隊合作與企劃製作
+參加敘事力學生團隊
+
+(製作Podcast內容、策展、主持人、腳本撰寫)
+
+我比他人更能專注聆聽團隊意見和精確提出痛點與向上提出現況需求、接受大家批評指導，抗壓性十足。
+
+</p>
+<P>實操經驗
+布展一場響應海洋污染的展覽
+
+從展品製作、展間規劃、線下（熱縮片活動）
+
+、線上（抽獎）活動、發布新聞稿、開幕式
+
+
+
+處事圓滑，多元接觸，橫跨各項活動
+
+擔任淺山精靈臉書小編(撰寫側記、海報編輯)
+擔任通識課課程助教(跟課、撰寫課程紀錄、準備課程材料)</p>
             </div>
         </div>
 
-        <div class="layout2">
-            <div class="banner">
-                <img src="banner.jpg" alt="封面圖片">
-            </div>
-            <div class="sections">
-                <a href="#education">學歷證照</a>
-                <a href="#activities">活動經歷</a>
-                <a href="#work">工作經歷</a>
-                <a href="#achievements">成果花絮</a>
-            </div>
-        </div>
-    </section>
+        
 
     <!-- 學歷證照 -->
     <section id="education">
@@ -52,7 +286,7 @@
         <div class="timeline">
             <div class="entry">
                 <h3>學校名稱</h3>
-                <p>學士 / 碩士 - 專業科系 (年份)</p>
+                <p>學士  - 觀光事業學系 (2021-2025)</p>
             </div>
             <div class="entry">
                 <h3>證書名稱</h3>
@@ -61,42 +295,139 @@
         </div>
     </section>
 
-    <!-- 活動經歷 -->
-    <section id="activities">
-        <h2>活動經歷</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>活動名稱</h3>
-                <p>活動描述與參與內容</p>
-            </div>
-            <div class="card">
-                <h3>活動名稱</h3>
-                <p>活動描述與參與內容</p>
-            </div>
-        </div>
-    </section>
+ <!-- 活動經歷 -->
+<section id="activities">
+  <h2>活動經歷</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>擔任區長</h3>
+      <p>112學年度擔任宿舍幹部</p>
+      <p>舉辦各項宿舍活動，身兼活動組組長。</p>
+      <a href="宿舍幹部證明.jpg" class="lightbox">
+        <img src="宿舍幹部證明.jpg" alt="成果">
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Podcast製作</h3>
+      <p>敘事力學生團隊 - 節目證明</p>
+      <p>製作播客內容、企劃執行和製作、採訪及訪談前置作業。</p>
+      <a href="Podcast製作證明書.jpg" class="lightbox">
+        <img src="Podcast製作證明書.jpg" alt="Podcast 製作成果">
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>外籍生輔導志工</h3>
+      <p>擔任華語角語言交換志工，跨國文化交流，包容性及開拓國際觀。</p>
+      <a href="華語角志工證書.jpg" class="lightbox">
+        <img src="華語角志工證書.jpg" alt="華語角志工證書">
+      </a>
+    </div>
+  </div>
+</section>
 
     <!-- 工作經歷 -->
     <section id="work">
         <h2>工作經歷</h2>
         <div class="work-entry">
-            <h3>公司名稱</h3>
-            <p>職位 - 工作內容簡介</p>
+            <h3>站務實習-臺灣高速鐵路股份有限公司</h3>
+            <p>1.高制度管理使人在面對壓力中茁壯成長
+
+2.時間、安全管理嚴格，使人不怠惰
+
+3.學習臨場反應及服務旅客的溝通、應變能力和說話的藝術
+
+4.具充足的細心跟耐心</p>
+             
         </div>
     </section>
 
-    <!-- 成果花絮 -->
     <section id="achievements">
-        <h2>成果花絮</h2>
-        <div class="gallery">
-            <img src="achievement1.jpg" alt="成果1">
-            <img src="achievement2.jpg" alt="成果2">
+  <h2>成果花絮</h2>
+  <div class="carousel">
+    <div class="carousel-images">
+      <img src="活動照片.webp" alt="Image 1" class="carousel-image">
+      <img src="活動照片2.png" alt="Image 2" class="carousel-image">
+      <img src="活動照片3.png" alt="Image 3" class="carousel-image">
+      <img src="活動照片4.webp" alt="Image 4" class="carousel-image">
+      <img src="活動照片5.png" alt="Image 5" class="carousel-image">
+      <img src="活動照片6.png" alt="Image 6" class="carousel-image">
+    </div>
+    <button class="prev" onclick="moveSlide(-2)">&#10094;</button>
+    <button class="next" onclick="moveSlide(2)">&#10095;</button>
+
+
+  </div>
+   <video width="600" height="400" controls>
+  <source src="video2.mp4" type="video/mp4">
+
+</video>
+</section>
+
+<script src="script.js"></script>
+
+  
+
         </div>
-    </section>
+   
+   
 
     <!-- 底部聯絡資訊 -->
     <footer>
         <p>聯絡方式：your.email@example.com | 電話：0912-345-678</p>
     </footer>
+<script>
+   let currentIndex = 0;
+
+function moveSlide(step) {
+  const images = document.querySelectorAll(".carousel-image");
+  currentIndex += step;
+
+  if (currentIndex < 0) {
+    currentIndex = images.length - 1;
+  } else if (currentIndex >= images.length) {
+    currentIndex = 0;
+  }
+
+  const newTransformValue = -currentIndex * 600;  // 每張圖片寬度 600px
+  document.querySelector(".carousel-images").style.transform = `translateX(${newTransformValue}px)`;
+}
+
+// Auto-slide every 2 seconds
+setInterval(() => moveSlide(1), 2000);  // 每 2 秒切換一次圖片
+
+
+// 獲取所有的圖片連結
+const lightboxLinks = document.querySelectorAll('.lightbox');
+const modal = document.createElement('div');
+modal.classList.add('lightbox-modal');
+document.body.appendChild(modal);
+
+// 創建關閉按鈕
+const closeButton = document.createElement('button');
+closeButton.classList.add('lightbox-close');
+closeButton.innerHTML = '&times;';
+modal.appendChild(closeButton);
+
+// 當點擊圖片連結時，顯示模態視窗
+lightboxLinks.forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const imgSrc = link.getAttribute('href');  // 取得圖片的原始地址
+    modal.innerHTML = '';  // 清空模態視窗內容
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    modal.appendChild(img);
+    modal.classList.add('active');  // 顯示模態視窗
+    modal.appendChild(closeButton);
+  });
+});
+
+// 當點擊關閉按鈕時，隱藏模態視窗
+closeButton.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+</script>
 </body>
 </html>
